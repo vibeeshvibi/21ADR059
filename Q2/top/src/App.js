@@ -22,18 +22,18 @@ const AuthComponent = () => {
       const response = await axios.post(corsAnywhereUrl + targetUrl, data, {
         headers: {
           'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest', // Required header for cors-anywhere
+          'X-Requested-With': 'XMLHttpRequest', 
         },
       });
 
       console.log(response)
 
-      const accessToken = response.data.access_token; // getting aut
+      const accessToken = response.data.access_token; 
       console.log(accessToken)
 
       setAccessToken(accessToken);
 
-  // Function to fetch data using access token
+
       const response2 = await axios.get(corsAnywhereUrl + dataUrl, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -41,7 +41,7 @@ const AuthComponent = () => {
         },
       });
       console.log(response2)
-      setProducts(response2.data); //  data structure matches expected response
+      setProducts(response2.data); 
     } catch (error) {
       console.error('Authentication error:', error);
       // Handle error (e.g., show error message)
@@ -49,7 +49,7 @@ const AuthComponent = () => {
   };
   
   useEffect(() => {
-    authenticateAndGetToken(); // Call authentication on component mount
+    authenticateAndGetToken(); 
   }, []);
 
   return (
